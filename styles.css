@@ -1,0 +1,17 @@
+
+
+#library-table {
+    width: 100vh;
+    border: 1px solid black;
+}
+
+.book-form{
+    background-color: rebeccapurple;
+    position: absolute;
+    height: 500px;
+    width: 400px;
+    margin:auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
