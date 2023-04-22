@@ -31,6 +31,29 @@ body {
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: 0.2s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.book-form-open {
+    visibility: visible;
+    transition: 0.2s ease-in-out;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.book-form .close-button {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    fill: rgb(80, 80, 80);
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
 }
 
 .book-form .title {

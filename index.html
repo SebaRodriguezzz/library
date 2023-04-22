@@ -11,7 +11,7 @@
     <div class="container">
         <h1 class="title">My Library</h1>
         <div class="button">
-            <button>Add book</button>
+            <button id="add-book">Add book</button>
         </div>
         <div class="table">
             <table id="library-table">
@@ -26,21 +26,22 @@
                 <tbody id="table-body">
                 </tbody>
             </table>
-            <div class="book-form">
+            <div class="book-form" id="add-book-form">
                 <div class="title"><h2>Add a new book</h2></div>
+                <button class="close-button" id="close-button"><svg width="35px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>window-close</title><path d="M13.46,12L19,17.54V19H17.54L12,13.46L6.46,19H5V17.54L10.54,12L5,6.46V5H6.46L12,10.54L17.54,5H19V6.46L13.46,12Z" /></svg></button>
                 <div class="form">
                     <form>
                         <div class="text-input">
                             <label for="btitle">Title:</label><br>
-                            <input type="text" id="btitle" placeholder="The Little Prince"><br><br>
+                            <input type="text" id="btitle" placeholder="The Little Prince" required><br><br>
                             <label for="bauthor">Author:</label><br>
-                            <input type="text" id="bauthor" placeholder="Antoine de Saint-Exupéry"><br><br>
+                            <input type="text" id="bauthor" placeholder="Antoine de Saint-Exupéry" required><br><br>
                             <label for="bpages">Number of pages:</label><br>
-                            <input type="text" id="bpages" placeholder="124"><br><br>
+                            <input type="number" id="bpages" placeholder="124" required><br><br>
                         </div>
                         <div class="radio-input">
                             <legend>Did you read this book?</legend>
-                            <input type="radio" id="bread" name="read" value="true">
+                            <input type="radio" id="bread" name="read" value="true" required>
                             <label for="bread">Yes</label>
 
                             <input type="radio" id="bunread" name="read" value="false">

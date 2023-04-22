@@ -1,5 +1,8 @@
 let myLibrary = [];
 let tableBody = document.getElementById("table-body");
+let addBookBtn = document.getElementById("add-book");
+let newBookForm = document.getElementById("add-book-form");
+let closeBookFormBtn = document.getElementById("close-button");
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -45,6 +48,13 @@ function insertTextOnCell(cell, text){
     cell.appendChild(textNode);
 }
 
+addBookBtn.addEventListener ('click', () => {
+    newBookForm.classList.add("book-form-open");
+});
+
+closeBookFormBtn.addEventListener ('click', () => {
+    newBookForm.classList.remove("book-form-open");
+})
 
 myLibrary.push(new Book("HOla", "prueba", 35, true));
 myLibrary.push(new Book("aloh", "prueba", 38, false));
