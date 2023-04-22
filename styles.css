@@ -1,17 +1,123 @@
+body {
+    font-family: Helvetica, sans-serif;
+    color: rgb(80, 80, 80);
+}
 
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
 #library-table {
     width: 100vh;
+    height: 50vh;
     border: 1px solid black;
 }
 
 .book-form{
-    background-color: rebeccapurple;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
     position: absolute;
-    height: 500px;
+    height: 480px;
     width: 400px;
     margin:auto;
     left: 0;
     right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.book-form .title {
     text-align: center;
+}
+
+.book-form .form {
+    margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.book-form .form .text-input input {
+    height: 45px;
+    width: 320px;
+    outline: 3px solid rgba(0, 0, 0, 0.3);
+    border: 0;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 5px;
+    padding-left: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.book-form .form .text-input input::placeholder {
+    color: rgb(168, 168, 168);
+}
+
+.book-form .form .text-input input:focus {
+    outline: 3px solid rgba(0, 0, 0, 0.6);
+    border: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.book-form .form label, .book-form .form legend {
+    font-size: 16px;
+    text-align: left;
+    font-weight: 600;
+    color: rgb(80, 80, 80);
+}
+
+.book-form .form .radio-input {
+    margin-bottom: 10px;
+}
+
+
+.book-form .form .radio-input legend {
+    margin-bottom: 8px;
+}
+
+.book-form .form .radio-input input {
+    width: 17px;
+    height: 17px;
+}
+
+.book-form .form .radio-input label {
+    position: relative;
+    top: -3px;
+    margin-right: 15px;
+}
+
+.book-form .form .submit {
+    height: 45px;
+    width: 332px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    border: 0;
+    color: rgb(80, 80, 80);
+    background-color: rgba(0, 0, 0, 0.06);
+    outline: 3px solid rgba(0, 0, 0, 0.6);
+    transition: 0.2s ease-in-out;
+}
+
+.book-form .form .submit:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.book-form .form .submit:active {
+    transition: 0.2s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.2);
+    outline: 3px solid rgba(0, 0, 0, 0.3);
 }

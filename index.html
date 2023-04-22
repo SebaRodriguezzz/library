@@ -8,28 +8,50 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 class="title">My Library</h1>
-    <div class="button">
-        <button>Add book</button>
-    </div>
-    <div class="table">
-        <table id="library-table">
-            <thead>
-                <tr>
-                    <th>Book</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Read</th>
-                </tr>
-            </thead>
-            <tbody id="table-body">
-            </tbody>
-        </table>
-        <div class="book-form">
-            
+    <div class="container">
+        <h1 class="title">My Library</h1>
+        <div class="button">
+            <button>Add book</button>
+        </div>
+        <div class="table">
+            <table id="library-table">
+                <thead>
+                    <tr>
+                        <th>Book</th>
+                        <th>Author</th>
+                        <th>Pages</th>
+                        <th>Read</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+            <div class="book-form">
+                <div class="title"><h2>Add a new book</h2></div>
+                <div class="form">
+                    <form>
+                        <div class="text-input">
+                            <label for="btitle">Title:</label><br>
+                            <input type="text" id="btitle" placeholder="The Little Prince"><br><br>
+                            <label for="bauthor">Author:</label><br>
+                            <input type="text" id="bauthor" placeholder="Antoine de Saint-Exupéry"><br><br>
+                            <label for="bpages">Number of pages:</label><br>
+                            <input type="text" id="bpages" placeholder="124"><br><br>
+                        </div>
+                        <div class="radio-input">
+                            <legend>Did you read this book?</legend>
+                            <input type="radio" id="bread" name="read" value="true">
+                            <label for="bread">Yes</label>
+
+                            <input type="radio" id="bunread" name="read" value="false">
+                            <label for="bunread">No</label>
+                        </div>
+                        <button class="submit">Add</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    
 </body>
 <script src="script.js"></script>
 </html>
