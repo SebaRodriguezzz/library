@@ -21,7 +21,7 @@ body {
     flex-direction: column;
     background-color: white;
     position: absolute;
-    height: 480px;
+    height: 460px;
     width: 400px;
     margin:auto;
     left: 0;
@@ -29,7 +29,7 @@ body {
     top: 0;
     bottom: 0;
     border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(0, 0, 0, 0.1);
     transition: 0.2s ease-in-out;
     opacity: 0;
@@ -55,6 +55,19 @@ body {
     cursor: pointer;
     padding: 0;
 }
+
+.book-form .close-button svg:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    border-radius: 100%;
+    transform: scale(0.95);
+}
+
+.book-form .close-button svg:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 
 .book-form .title {
     text-align: center;
@@ -143,4 +156,40 @@ body {
     transition: 0.2s ease-in-out;
     background-color: rgba(0, 0, 0, 0.2);
     outline: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+#add-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 45px;
+    width: 150px;
+    margin-bottom: 21.440px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    border: 0;
+    color: rgb(80, 80, 80);
+    background-color: rgba(0, 0, 0, 0.06);
+    outline: 3px solid rgba(0, 0, 0, 0.6);
+    transition: 0.2s ease-in-out;
+    padding: 0;
+}
+
+#add-book:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+#add-book:active {
+    transition: 0.2s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.2);
+    outline: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+#add-book-icon {
+    fill: rgb(80, 80, 80);
+    margin-top: -2px;
 }
