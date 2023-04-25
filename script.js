@@ -82,7 +82,10 @@ function clearForm(){
 
 
 myLibrary.push(new Book("HOla", "prueba", 35, true));
+myLibrary.push(new Book("HOla", "prueba", 35, true));
 myLibrary.push(new Book("aloh", "prueba", 38, false));
 myLibrary.push(new Book("libro3", "fgfdgfd", 45, true));
+
+
 
 displayBooks();
