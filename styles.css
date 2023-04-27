@@ -13,11 +13,11 @@ body {
 
 #library-table {
     table-layout: fixed;
-    background-color:  rgb(245, 245, 245);;
+    background-color:  rgb(245, 245, 245);
     width: 80vw;
     height: 70vh;
     border: 3px solid rgb(80, 80, 80);
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 15px 35px;
     text-align: center;
     border-collapse: collapse;
@@ -28,13 +28,22 @@ td {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-bottom: 1px solid rgb(80, 80, 80);
+    border-bottom: 1px solid rgba(80, 80, 80, 0.123);
 }
 
 thead tr th{
-    border-bottom: 1px solid rgb(80, 80, 80);
+    border-bottom: 1px solid rgb(80, 80, 80, 0.123);
     padding: 15px;
-    
+}
+
+.delete-cell{
+    max-width: 20px;
+    cursor: pointer;
+    background-color: rgb(241, 241, 241);
+}
+
+.delete-cell:hover {
+    background-color: rgb(231, 231, 231);
 }
 
 .book-form{

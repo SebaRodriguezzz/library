@@ -5,7 +5,6 @@ let addBookBtn = document.getElementById("add-book");
 let newBookForm = document.getElementById("add-book-form");
 let closeBookFormBtn = document.getElementById("close-button");
 let submitFormBtn = document.getElementById("submit-form");
-
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
@@ -22,12 +21,31 @@ function addBookToLibrary(title, author, pages, read){
 
 function displayBooks(){
     const newBooks = myLibrary.filter(book => !displayedBooks.includes(book.title && book.author && book.pages));
-    newBooks.forEach(book => {
+    newBooks.forEach((book, index) => {
         let newRow = createRow(tableBody);
+        let deleteCell = createCell(newRow);
+        let deleteIcon = document.createElement('img');
+
+        deleteIcon.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTksM1Y0SDRWNkg1VjE5QTIsMiAwIDAsMCA3LDIxSDE3QTIsMiAwIDAsMCAxOSwxOVY2SDIwVjRIMTVWM0g5TTcsNkgxN1YxOUg3VjZNOSw4VjE3SDExVjhIOU0xMyw4VjE3SDE1VjhIMTNaIiAvPjwvc3ZnPg==';
+        deleteIcon.setAttribute('width', '25px')
+        insertTextOnCell(deleteCell, '');
+        deleteCell.appendChild(deleteIcon);
+        deleteCell.classList.add('delete-cell');
+        deleteCell.addEventListener('click', function() {deleteBook(index);});
         for (const key in book) {
             if (typeof book[key] !== 'function') {
                 let newCell = createCell(newRow);
-                insertTextOnCell(newCell, book[key]);
+                if (book[key] === book.read){
+                    if (book[key] === true){
+                        insertTextOnCell(newCell, 'Yes');
+                    } else {
+                        insertTextOnCell(newCell, 'No');
+                    }
+                } else {
+                    insertTextOnCell(newCell, book[key]);
+                
+                }
+                newCell.setAttribute('colspan', '4');
             }
         }
         displayedBooks.push(book.title, book.author, book.pages);
@@ -80,12 +98,27 @@ function clearForm(){
     document.getElementById("bread").checked = false;
 }
 
+function deleteBook(bookIndex){
+    myLibrary.splice(bookIndex, 1);
+    console.log(bookIndex);
+    displayedBooks = [];
+    for (let i = 0; i < myLibrary.length; i++) {
+    displayedBooks.push([i + 1, myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read]);
+    }
+    clearTable(tableBody);
+    displayBooks();
+}
+
+function clearTable(table) {
+    while (table.rows.length > 0) {
+      table.deleteRow(-1);
+    }
+  }
 
 myLibrary.push(new Book("HOla", "prueba", 35, true));
 myLibrary.push(new Book("HOla", "prueba", 35, true));
 myLibrary.push(new Book("aloh", "prueba", 38, false));
 myLibrary.push(new Book("libro3", "fgfdgfd", 45, true));
-
 
 
 displayBooks();
