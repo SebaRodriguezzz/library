@@ -19,9 +19,10 @@ function addBookToLibrary(title, author, pages, read){
     myLibrary.push(new Book(title, author, pages, read));
 }
 
+
 function displayBooks(){
-    const newBooks = myLibrary.filter(book => !displayedBooks.includes(book.title && book.author && book.pages));
-    newBooks.forEach((book, index) => {
+    clearTable(tableBody);
+    myLibrary.forEach((book, index) => {
         let newRow = createRow(tableBody);
         let deleteCell = createCell(newRow);
         let deleteIcon = document.createElement('img');
@@ -32,6 +33,7 @@ function displayBooks(){
         deleteCell.appendChild(deleteIcon);
         deleteCell.classList.add('delete-cell');
         deleteCell.addEventListener('click', function() {deleteBook(index);});
+        
         for (const key in book) {
             if (typeof book[key] !== 'function') {
                 let newCell = createCell(newRow);
@@ -48,8 +50,8 @@ function displayBooks(){
                 newCell.setAttribute('colspan', '4');
             }
         }
-        displayedBooks.push(book.title, book.author, book.pages);
     });
+    handleEmptyTable(tableBody);
 }
 
 
@@ -100,13 +102,8 @@ function clearForm(){
 
 function deleteBook(bookIndex){
     myLibrary.splice(bookIndex, 1);
-    console.log(bookIndex);
-    displayedBooks = [];
-    for (let i = 0; i < myLibrary.length; i++) {
-    displayedBooks.push([i + 1, myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read]);
-    }
-    clearTable(tableBody);
     displayBooks();
+    
 }
 
 function clearTable(table) {
@@ -115,10 +112,13 @@ function clearTable(table) {
     }
   }
 
-myLibrary.push(new Book("HOla", "prueba", 35, true));
-myLibrary.push(new Book("HOla", "prueba", 35, true));
-myLibrary.push(new Book("aloh", "prueba", 38, false));
-myLibrary.push(new Book("libro3", "fgfdgfd", 45, true));
+function handleEmptyTable(table){
+    if (table.rows.length < 1){
+        let cell = createCell(createRow(table));
+        cell.setAttribute('colspan', '17')
+        insertTextOnCell(cell, "Your library is empty, add a book!");
+    }
+}
 
 
 displayBooks();
