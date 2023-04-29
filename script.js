@@ -5,6 +5,7 @@ let addBookBtn = document.getElementById("add-book");
 let newBookForm = document.getElementById("add-book-form");
 let closeBookFormBtn = document.getElementById("close-button");
 let submitFormBtn = document.getElementById("submit-form");
+
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
@@ -13,27 +14,20 @@ function Book(title, author, pages, read){
     this.info = function(){
         return this.title +  "by " + this.author + ", " + this.pages + " pages, " + (this.read? "already read." : "not read yet.");
     }
+    this.toggleRead = function(){
+        this.read = !this.read;
+    }
 }
 
 function addBookToLibrary(title, author, pages, read){
     myLibrary.push(new Book(title, author, pages, read));
 }
 
-
 function displayBooks(){
     clearTable(tableBody);
     myLibrary.forEach((book, index) => {
         let newRow = createRow(tableBody);
-        let deleteCell = createCell(newRow);
-        let deleteIcon = document.createElement('img');
-
-        deleteIcon.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTksM1Y0SDRWNkg1VjE5QTIsMiAwIDAsMCA3LDIxSDE3QTIsMiAwIDAsMCAxOSwxOVY2SDIwVjRIMTVWM0g5TTcsNkgxN1YxOUg3VjZNOSw4VjE3SDExVjhIOU0xMyw4VjE3SDE1VjhIMTNaIiAvPjwvc3ZnPg==';
-        deleteIcon.setAttribute('width', '25px')
-        insertTextOnCell(deleteCell, '');
-        deleteCell.appendChild(deleteIcon);
-        deleteCell.classList.add('delete-cell');
-        deleteCell.addEventListener('click', function() {deleteBook(index);});
-        
+        addDeleteBtnOnRow(newRow, index);
         for (const key in book) {
             if (typeof book[key] !== 'function') {
                 let newCell = createCell(newRow);
@@ -43,6 +37,7 @@ function displayBooks(){
                     } else {
                         insertTextOnCell(newCell, 'No');
                     }
+                    toggleRead(newCell, index);
                 } else {
                     insertTextOnCell(newCell, book[key]);
                 
@@ -77,6 +72,40 @@ closeBookFormBtn.addEventListener ('click', () => {
     
 });
 
+function toggleRead(cell, index){
+    
+    let book = myLibrary[index];
+    addHoverListener(cell, book.read);
+    cell.addEventListener('click', () => {
+        book.toggleRead();
+        displayBooks();
+    })
+    
+}
+
+function addHoverListener(cell, state){
+    if (state == true){
+        cell.classList.add("toggle-read-cell-true");
+        cell.addEventListener('mouseover', () => {cell.innerHTML = '';})
+        cell.addEventListener('mouseout', () => {cell.innerHTML = 'Yes'});
+    } else {
+        cell.classList.add("toggle-read-cell-false");
+        cell.addEventListener('mouseover', () => {cell.innerHTML = '';})
+        cell.addEventListener('mouseout', () => {cell.innerHTML = 'No'});
+    }
+}
+
+function addDeleteBtnOnRow(row, index){
+    let deleteCell = createCell(row);
+    let deleteIcon = document.createElement('img');
+    deleteIcon.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTksM1Y0SDRWNkg1VjE5QTIsMiAwIDAsMCA3LDIxSDE3QTIsMiAwIDAsMCAxOSwxOVY2SDIwVjRIMTVWM0g5TTcsNkgxN1YxOUg3VjZNOSw4VjE3SDExVjhIOU0xMyw4VjE3SDE1VjhIMTNaIiAvPjwvc3ZnPg==';
+    deleteIcon.setAttribute('width', '25px')
+    insertTextOnCell(deleteCell, '');
+    deleteCell.appendChild(deleteIcon);
+    deleteCell.classList.add('delete-cell');
+    deleteCell.addEventListener('click', function() {deleteBook(index);});
+}
+
 submitFormBtn.addEventListener ('click', (event) => {
     event.preventDefault();
     let title = document.getElementById("btitle").value;
@@ -103,7 +132,6 @@ function clearForm(){
 function deleteBook(bookIndex){
     myLibrary.splice(bookIndex, 1);
     displayBooks();
-    
 }
 
 function clearTable(table) {
@@ -119,6 +147,5 @@ function handleEmptyTable(table){
         insertTextOnCell(cell, "Your library is empty, add a book!");
     }
 }
-
 
 displayBooks();

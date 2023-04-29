@@ -46,6 +46,25 @@ thead tr th{
     background-color: rgb(231, 231, 231);
 }
 
+.toggle-read-cell-true, .toggle-read-cell-false {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.toggle-read-cell-true:hover, .toggle-read-cell-false:hover{
+    background-color: rgb(241, 241, 241);
+    
+}
+.toggle-read-cell-true:hover::after {
+    content: 'Change status to unread';
+    
+}
+
+.toggle-read-cell-false:hover::after {
+    content: 'Change status to read';
+    
+}
+
 .book-form{
     display: flex;
     flex-direction: column;
