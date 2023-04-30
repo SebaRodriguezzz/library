@@ -33,9 +33,9 @@ function displayBooks(){
                 let newCell = createCell(newRow);
                 if (book[key] === book.read){
                     if (book[key] === true){
-                        insertTextOnCell(newCell, 'Yes');
+                        insertTextOnCell(newCell, 'Read');
                     } else {
-                        insertTextOnCell(newCell, 'No');
+                        insertTextOnCell(newCell, 'Unread');
                     }
                     toggleRead(newCell, index);
                 } else {
@@ -87,11 +87,11 @@ function addHoverListener(cell, state){
     if (state == true){
         cell.classList.add("toggle-read-cell-true");
         cell.addEventListener('mouseover', () => {cell.innerHTML = '';})
-        cell.addEventListener('mouseout', () => {cell.innerHTML = 'Yes'});
+        cell.addEventListener('mouseout', () => {cell.innerHTML = 'Read'});
     } else {
         cell.classList.add("toggle-read-cell-false");
         cell.addEventListener('mouseover', () => {cell.innerHTML = '';})
-        cell.addEventListener('mouseout', () => {cell.innerHTML = 'No'});
+        cell.addEventListener('mouseout', () => {cell.innerHTML = 'Unread'});
     }
 }
 

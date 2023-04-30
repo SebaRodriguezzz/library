@@ -1,7 +1,9 @@
+
 body {
     font-family: Helvetica, sans-serif;
     color: rgb(80, 80, 80);
     background-color: rgb(235, 235, 235);
+    
 }
 
 .container {
@@ -40,10 +42,12 @@ thead tr th{
     max-width: 20px;
     cursor: pointer;
     background-color: rgb(241, 241, 241);
+    transition: 0.2s;
 }
 
 .delete-cell:hover {
     background-color: rgb(231, 231, 231);
+    
 }
 
 .toggle-read-cell-true, .toggle-read-cell-false {
@@ -51,10 +55,15 @@ thead tr th{
     transition: 0.2s;
 }
 
-.toggle-read-cell-true:hover, .toggle-read-cell-false:hover{
-    background-color: rgb(241, 241, 241);
+.toggle-read-cell-true:hover {
+    background-color: rgba(255, 150, 150, 0.4);
     
 }
+
+.toggle-read-cell-false:hover{
+    background-color: rgba(153, 255, 150, 0.4);
+}
+
 .toggle-read-cell-true:hover::after {
     content: 'Change status to unread';
     
